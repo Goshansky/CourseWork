@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+</head>
+<body>
+<h1>Вход в систему</h1>
+<form th:action="@{/login}" method="post">
+    <label for="userName">Имя пользователя:</label>
+    <input type="text" id="userName" name="userName"><br>
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password"><br>
+    <button type="submit">Войти</button>
+    <a href="/registration">нет аккаунта</a></li>
+</form>
+</body>
+</html>
