@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Аккаунт пользователя</title>
+    <link href = "../static/css/account.css" rel = "stylesheet" th:href="@{/css/account.css}">
+</head>
+<body>
+<h1>Аккаунт пользователя</h1>
+
+<h2>Информация о пользователе</h2>
+<table>
+    <tr>
+        <th>Имя пользователя:</th>
+        <td><p th:text="${user.userName}"></p></td>
+    </tr>
+    <tr>
+        <th>Имя:</th>
+        <td><p th:text="${user.firstName}"></p></td>
+    </tr>
+    <tr>
+        <th>Фамилия:</th>
+        <td><p th:text="${user.lastName}"></p></td>
+    </tr>
+    <tr>
+        <th>Телефон:</th>
+        <td><p th:text="${user.phone}"></p></td>
+    </tr>
+    <tr>
+        <th>Электронная почта:</th>
+        <td><p th:text="${user.email}"></p></td>
+    </tr>
+</table>
+
+<h2>Список заказов</h2>
+<table>
+    <tr>
+        <th>ID заказа</th>
+        <th>Дата заказа</th>
+        <th>Сумма заказа</th>
+        <th>Статус заказа</th>
+    </tr>
+<!--    <tr th:each="order : ${user.orders}">-->
+<!--        <td th:text="${order.id}"></td>-->
+<!--        <td th:text="${order.date}"></td>-->
+<!--        <td th:text="${order.totalPrice}"></td>-->
+<!--        <td th:text="${order.status}"></td>-->
+<!--    </tr>-->
+</table>
+
+</body>
+</html>

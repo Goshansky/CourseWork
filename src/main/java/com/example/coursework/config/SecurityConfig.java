@@ -35,6 +35,7 @@ public class SecurityConfig {
                         .usernameParameter("userName")
                         .passwordParameter("password")
                         .permitAll()
+                        .defaultSuccessUrl("/", true)
                 )
                 .logout((logout) -> logout.permitAll());
 

@@ -1,5 +1,6 @@
 package com.example.coursework.service;
 
+import com.example.coursework.model.Order;
 import com.example.coursework.model.User;
 import com.example.coursework.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,12 @@ public class UserService implements UserDetailsService {
     public User findByUserName(String userName) {
         return userRepository.findByUserName(userName);
     }
+
+//    public void addOrderToUser(Long userId, Order order) {
+//        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
+//        user.getOrders().add(order);
+//        userRepository.save(user);
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
