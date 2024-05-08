@@ -35,7 +35,9 @@
 <h2>Итоговая цена: <span th:text="${shoppingCart.totalPrice}"></span></h2>
 
 <a th:href="@{/catalog}">Продолжить покупки</a>
-<!--<a th:href="@{/orders}">Оформить заказ</a>-->
+<form th:action="@{/cart/checkout}" method="post">
+    <button type="submit">Оформить заказ</button>
+</form>
 
 </body>
 </html>

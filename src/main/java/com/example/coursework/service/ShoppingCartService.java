@@ -8,7 +8,9 @@ import com.example.coursework.repository.ShoppingCartRepository;
 import com.example.coursework.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,6 +19,9 @@ public class ShoppingCartService {
     private ShoppingCartRepository shoppingCartRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ShoppingCartItemRepository shoppingCartItemRepository;
+
 
 
     public ShoppingCart createShoppingCart(Long userId) {

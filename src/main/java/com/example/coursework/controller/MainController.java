@@ -1,7 +1,9 @@
 package com.example.coursework.controller;
 
+import com.example.coursework.model.Order;
 import com.example.coursework.model.ShoppingCart;
 import com.example.coursework.model.User;
+import com.example.coursework.repository.OrderRepository;
 import com.example.coursework.service.BookService;
 import com.example.coursework.service.ShoppingCartService;
 import com.example.coursework.service.UserService;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MainController {
@@ -21,6 +25,9 @@ public class MainController {
     @Autowired
     private ShoppingCartService shoppingCartService;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
 
     @GetMapping("/")
     public String home() {
@@ -28,7 +35,12 @@ public class MainController {
     }
 
     @GetMapping("/catalog")
-    public String homePage(Model model) {
+    public String homePage(Model model, Principal principal) {
+        String userName = principal.getName();
+
+        // Получаем объект пользователя из базы данных по его имени
+        User user = userService.findByUserName(userName);
+        model.addAttribute("user", user);
         model.addAttribute("books", bookService.findAll());
         return "catalog";
     }
@@ -40,6 +52,10 @@ public class MainController {
 
         // Получаем объект пользователя из базы данных по его имени
         User user = userService.findByUserName(userName);
+        List<Order> orders = orderRepository.findByUser_Id(user.getId());
+
+        // Добавить список заказов в модель
+        model.addAttribute("orders", orders);
 
         // Добавляем объект пользователя в модель для отображения на странице
         model.addAttribute("user", user);

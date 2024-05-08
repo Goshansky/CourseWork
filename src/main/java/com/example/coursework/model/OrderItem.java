@@ -15,8 +15,8 @@ public class OrderItem {
     private double totalPrice;
     private int countProduct;
 
-    @OneToOne
-    @JoinColumn(name = "book_id")
+    @ManyToOne
+    @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
     @ManyToOne

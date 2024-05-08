@@ -115,6 +115,7 @@ public class ShoppingCartItemService {
         } else if(shoppingCartItem.getCountProduct() == 1) {
             // Если количество книг в элементе корзины равно 1, удалить элемент корзины из базы данных
             shoppingCart.getShoppingCartItem().remove(shoppingCartItem);
+            shoppingCart = shoppingCartService.updateShoppingCart(shoppingCart, shoppingCart.getShoppingCartItem());
             shoppingCartItemRepository.delete(shoppingCartItem);
             shoppingCartItem = new ShoppingCartItem();
         }

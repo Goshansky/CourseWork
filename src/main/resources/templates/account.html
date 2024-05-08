@@ -31,20 +31,44 @@
     </tr>
 </table>
 
-<h2>Список заказов</h2>
+<h1>Заказы</h1>
+
 <table>
+    <thead>
     <tr>
-        <th>ID заказа</th>
-        <th>Дата заказа</th>
-        <th>Сумма заказа</th>
-        <th>Статус заказа</th>
+        <th>Номер заказа</th>
+        <th>Пользователь</th>
+        <th>Итоговая цена</th>
+        <th></th>
     </tr>
-<!--    <tr th:each="order : ${user.orders}">-->
-<!--        <td th:text="${order.id}"></td>-->
-<!--        <td th:text="${order.date}"></td>-->
-<!--        <td th:text="${order.totalPrice}"></td>-->
-<!--        <td th:text="${order.status}"></td>-->
-<!--    </tr>-->
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.user.userName}"></td>
+        <td th:text="${order.totalPrice}"></td>
+        <td>
+            <table>
+                <thead>
+                <tr>
+                    <th>Название книги</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                    <th>Общая цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="orderItemCurrent : ${order.orderItem}">
+                    <td th:text="${orderItemCurrent.book.name}"></td>
+                    <td th:text="${orderItemCurrent.countProduct}"></td>
+                    <td th:text="${orderItemCurrent.book.bookPrice}"></td>
+                    <td th:text="${orderItemCurrent.totalPrice}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
 </table>
 
 </body>

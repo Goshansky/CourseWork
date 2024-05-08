@@ -1,9 +1,12 @@
 package com.example.coursework.controller;
 
+import com.example.coursework.model.ShoppingCart;
 import com.example.coursework.model.User;
 import com.example.coursework.repository.UserRepository;
+import com.example.coursework.service.ShoppingCartService;
 import com.example.coursework.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +18,9 @@ public class RegistrationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ShoppingCartService shoppingCartService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -39,6 +45,9 @@ public class RegistrationController {
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
         userService.saveUser(user);
+
+        ShoppingCart shoppingCart = shoppingCartService.createShoppingCart(user.getId());
+
         return "redirect:/login";
     }
 }

@@ -30,12 +30,12 @@
       <form th:action="@{/api/shopping-cart-items}" method="post">
         <input type="hidden" name="bookId" th:value="${book.id}">
         <input type="hidden" name="countProduct" value="1">
-        <input type="hidden" name="userId" th:value="1">
+        <input type="hidden" name="userId" th:value="${user.id}">
         <button type="submit">Добавить в корзину</button>
       </form>
-      <form th:action="@{/api/shopping-cart-items/1/1/delete}" method="post">
+      <form th:action="@{/api/shopping-cart-items/__${user.id}__/__${book.id}__/delete}" method="post">
         <input type="hidden" name="bookId" th:value="${book.id}">
-        <input type="hidden" name="userId" th:value="1">
+        <input type="hidden" name="userId" th:value="${user.id}">
         <button type="submit">Удалить</button>
       </form>
     </div>
