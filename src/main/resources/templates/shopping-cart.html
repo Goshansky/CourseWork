@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Корзина</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<h1>Корзина</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th>Цена</th>
+        <th>Количество</th>
+        <th>Стоимость</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${shoppingCart.shoppingCartItem}">
+        <td th:text="${item.book.name}"></td>
+        <td th:text="${item.book.bookPrice}"></td>
+        <td th:text="${item.countProduct}"></td>
+        <td th:text="${item.totalPrice}"></td>
+<!--        <td>-->
+<!--            <form th:action="@{/shopping-cart/${item.book.id}/${item.countProduct}}" method="post">-->
+<!--                <button type="submit" class="btn btn-danger">Удалить</button>-->
+<!--            </form>-->
+<!--        </td>-->
+    </tr>
+    </tbody>
+</table>
+
+<h2>Итоговая стоимость: <span th:text="${shoppingCart.totalPrice}"></span></h2>
+<h2>Итоговое количество: <span th:text="${shoppingCart.countProduct}"></span></h2>
+
+<a th:href="@{/catalog}" class="btn btn-primary">Продолжить покупки</a>
+<a th:href="@{/order/create}" class="btn btn-primary">Оформить заказ</a>
+
+</body>
+</html>

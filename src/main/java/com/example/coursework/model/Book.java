@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Table(name = "books")
 @Getter
@@ -14,9 +12,13 @@ public class Book {
     @Id
     private int id;
     private String name;
-    private String bookPrice;
+    private int bookPrice;
     @Column(length = 1000)
     private String description;
-    //@OneToMany(mappedBy = "book")
-    //private List<OrderItem> orderItem;
+
+    @OneToOne
+    private OrderItem orderItem;
+    @OneToOne
+    private ShoppingCartItem shoppingCartItem;
+
 }

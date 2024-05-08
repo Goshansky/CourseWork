@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Корзина</title>
+</head>
+<body>
+
+<h1>Корзина</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Название книги</th>
+        <th>Количество</th>
+        <th>Цена</th>
+        <th>Общая цена</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${shoppingCartItems}">
+        <td th:text="${item.book.name}"></td>
+        <td th:text="${item.countProduct}"></td>
+        <td th:text="${item.book.bookPrice}"></td>
+        <td th:text="${item.totalPrice}"></td>
+<!--        <td>-->
+<!--            <form th:action="@{/shopping-cart-items/{id}/delete(id=${item.id})}" method="post">-->
+<!--                <button type="submit">Удалить</button>-->
+<!--            </form>-->
+<!--        </td>-->
+    </tr>
+    </tbody>
+</table>
+
+<h2>Итоговая цена: <span th:text="${shoppingCart.totalPrice}"></span></h2>
+
+<a th:href="@{/catalog}">Продолжить покупки</a>
+<!--<a th:href="@{/orders}">Оформить заказ</a>-->
+
+</body>
+</html>

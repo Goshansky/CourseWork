@@ -27,8 +27,11 @@ public class User {
 
     private String password;
 
-//    @OneToMany(mappedBy = "user")
-//    private List<Order> orders;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private ShoppingCart shoppingCart;
 
     // геттеры и сеттеры
 }

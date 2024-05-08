@@ -7,23 +7,24 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "shopping_carts")
 @Getter
 @Setter
-public class Order {
+public class ShoppingCart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String orderNumber;
+    private String shoppingCartNumber;
     private double totalPrice;
     private int countProduct;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany
-    private List<OrderItem> orderItem;
+    private List<ShoppingCartItem> shoppingCartItem;
 
+    // геттеры и сеттеры
 }

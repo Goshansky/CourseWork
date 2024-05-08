@@ -25,12 +25,6 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUserName(userName);
     }
 
-//    public void addOrderToUser(Long userId, Order order) {
-//        User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException(userId));
-//        user.getOrders().add(order);
-//        userRepository.save(user);
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findByUserName(userName);

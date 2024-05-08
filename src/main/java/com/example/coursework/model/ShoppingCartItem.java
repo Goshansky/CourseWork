@@ -4,26 +4,24 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
-@Table(name = "orders")
+@Table(name = "shopping_cart_items")
 @Getter
 @Setter
-public class Order {
-
+public class ShoppingCartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String orderNumber;
     private double totalPrice;
     private int countProduct;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
-    @OneToMany
-    private List<OrderItem> orderItem;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private ShoppingCart shoppingCart;
+
+
 
 }

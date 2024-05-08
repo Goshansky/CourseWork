@@ -1,7 +1,9 @@
 package com.example.coursework.controller;
 
+import com.example.coursework.model.ShoppingCart;
 import com.example.coursework.model.User;
 import com.example.coursework.service.BookService;
+import com.example.coursework.service.ShoppingCartService;
 import com.example.coursework.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,8 @@ public class MainController {
     private BookService bookService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ShoppingCartService shoppingCartService;
 
 
     @GetMapping("/")
@@ -43,5 +47,12 @@ public class MainController {
         return "account";
     }
 
+//    @GetMapping("/shopping-cart")
+//    public String showShoppingCart(Model model, Principal principal) {
+//        String username = principal.getName();
+//        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartByUserName(username);
+//        model.addAttribute("shoppingCart", shoppingCart);
+//        return "shopping-cart";
+//    }
 
 }
