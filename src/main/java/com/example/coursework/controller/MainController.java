@@ -1,6 +1,7 @@
 package com.example.coursework.controller;
 
 import com.example.coursework.model.Order;
+import com.example.coursework.model.Role;
 import com.example.coursework.model.ShoppingCart;
 import com.example.coursework.model.User;
 import com.example.coursework.repository.OrderRepository;
@@ -40,6 +41,13 @@ public class MainController {
 
         // Получаем объект пользователя из базы данных по его имени
         User user = userService.findByUserName(userName);
+
+        Role role = user.getRoles().stream().findFirst().orElse(null);
+        if (role != null) {
+            String roleName = role.getName();
+            System.out.println("Role name: " + roleName);
+        }
+
         model.addAttribute("user", user);
         model.addAttribute("books", bookService.findAll());
         return "catalog";

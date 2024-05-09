@@ -33,25 +33,4 @@ public class LoginController {
         return "login-error";
     }
 
-//    @PostMapping("/login")
-//    public String login(@RequestParam("userName") String userName, Model model) {
-//        // Получить текущего пользователя
-//        User currentUser = userService.findByUserName(userName);
-//
-//        ShoppingCart shoppingCart = shoppingCartRepository.findByUser_Id(currentUser.getId()).orElse(null);
-//
-//        if (shoppingCart == null) {
-//            // Создать новую корзину для текущего пользователя
-//            shoppingCart = new ShoppingCart();
-//            shoppingCart.setUser(currentUser);
-//            shoppingCartRepository.save(shoppingCart);
-//        }
-//
-//        // Добавить корзину и ее элементы в модель
-//        model.addAttribute("shoppingCart", shoppingCart);
-//        model.addAttribute("shoppingCartItems", shoppingCart.getShoppingCartItem());
-//
-//        // Вернуть имя страницы корзины
-//        return "cart";
-//    }
 }

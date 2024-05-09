@@ -15,4 +15,16 @@ public class BookService {
     public Iterable<Book> findAll() {
         return bookRepository.findAll();
     }
+
+    public Book findById(int id) {
+        return bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Книга не найдена"));
+    }
+
+    public Book save(Book book) {
+        return bookRepository.save(book);
+    }
+
+    public void deleteById(int id) {
+        bookRepository.deleteById(id);
+    }
 }

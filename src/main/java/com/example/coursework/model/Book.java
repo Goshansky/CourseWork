@@ -22,5 +22,7 @@ public class Book {
     private List<OrderItem> orderItem;
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ShoppingCartItem> shoppingCartItem;
+    @ManyToOne
+    private User user;
 
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/admin/book/add}" method="post">
+    <label for="name">Название книги:</label>
+    <input type="text" id="name" name="name"><br>
+    <label for="price">Цена:</label>
+    <input type="text" id="price" name="price"><br>
+    <label for="description">Описание:</label>
+    <input type="text" id="description" name="description"><br>
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>

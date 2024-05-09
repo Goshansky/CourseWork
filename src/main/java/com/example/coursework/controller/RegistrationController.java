@@ -1,7 +1,9 @@
 package com.example.coursework.controller;
 
+import com.example.coursework.model.Role;
 import com.example.coursework.model.ShoppingCart;
 import com.example.coursework.model.User;
+import com.example.coursework.repository.RoleRepository;
 import com.example.coursework.repository.UserRepository;
 import com.example.coursework.service.ShoppingCartService;
 import com.example.coursework.service.UserService;
@@ -25,6 +27,9 @@ public class RegistrationController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     @GetMapping("/registration")
     public String registration() {
         return "registration";
@@ -44,6 +49,11 @@ public class RegistrationController {
         user.setPhone(phone);
         user.setEmail(email);
         user.setPassword(passwordEncoder.encode(password));
+        userService.saveUser(user);
+
+        Role role = roleRepository.findByName("USER");
+        user.getRoles().add(role);
+
         userService.saveUser(user);
 
         ShoppingCart shoppingCart = shoppingCartService.createShoppingCart(user.getId());
