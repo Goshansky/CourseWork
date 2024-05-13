@@ -3,7 +3,6 @@ package com.example.coursework.controller;
 import com.example.coursework.model.ShoppingCartItem;
 import com.example.coursework.service.ShoppingCartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;

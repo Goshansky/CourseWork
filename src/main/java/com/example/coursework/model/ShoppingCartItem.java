@@ -22,6 +22,4 @@ public class ShoppingCartItem {
     @ManyToOne(cascade = CascadeType.ALL)
     private ShoppingCart shoppingCart;
 
-
-
 }

@@ -1,8 +1,6 @@
 package com.example.coursework.repository;
 
 import com.example.coursework.model.Role;
-import com.example.coursework.model.ShoppingCartItem;
-import com.example.coursework.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

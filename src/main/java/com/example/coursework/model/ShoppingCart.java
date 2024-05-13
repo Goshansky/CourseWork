@@ -25,6 +25,4 @@ public class ShoppingCart {
 
     @OneToMany
     private List<ShoppingCartItem> shoppingCartItem;
-
-    // геттеры и сеттеры
 }

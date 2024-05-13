@@ -1,9 +1,7 @@
 package com.example.coursework.service;
 
-import com.example.coursework.model.Order;
 import com.example.coursework.model.Role;
 import com.example.coursework.model.User;
-import com.example.coursework.repository.RoleRepository;
 import com.example.coursework.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,9 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -25,8 +20,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
 
     public User saveUser(User user) {
         return userRepository.save(user);

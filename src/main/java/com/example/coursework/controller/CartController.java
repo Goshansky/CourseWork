@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/cart")
@@ -29,10 +28,6 @@ public class CartController {
     @Autowired
     private OrderRepository orderRepository;
 
-    @Autowired
-    private OrderItemRepository orderItemRepository;
-    @Autowired
-    private ShoppingCartService shoppingCartService;
     @Autowired
     private OrderService orderService;
 
