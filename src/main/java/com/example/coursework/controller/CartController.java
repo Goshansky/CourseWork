@@ -64,31 +64,23 @@ public class CartController {
     public String checkout(Principal principal) {
         // Получить текущую корзину пользователя
         String userName = principal.getName();
-
         // Получаем объект пользователя из базы данных по его имени
         User user = userService.findByUserName(userName);
         // Получить текущую корзину пользователя
         ShoppingCart shoppingCart = shoppingCartRepository.findByUser_Id(user.getId()).orElseThrow(() -> new RuntimeException("Корзина не найдена"));
-
         // Создать новый заказ на основе текущей корзины
         Order order = orderService.createOrderFromShoppingCart(shoppingCart);
-
         // Сохранить новый заказ в базе данных
         orderRepository.save(order);
-
         // Очистить корзину
         shoppingCart.setTotalPrice(0.0);
         shoppingCart.setCountProduct(0);
         shoppingCart.getShoppingCartItem().clear();
-
         List<ShoppingCartItem> shoppingCartItems = shoppingCartItemRepository.findByShoppingCart_Id(shoppingCart.getId());
-
         // Удалить все элементы корзины из базы данных
         shoppingCartItemRepository.deleteAll(shoppingCartItems);
-
         // Сохранить очищенную корзину в базе данных
         shoppingCartRepository.save(shoppingCart);
-
         // Вернуть имя страницы успешного оформления заказа
         return "redirect:/account";
     }

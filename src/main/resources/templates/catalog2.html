@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог товаров</title>
+    <link href = "../static/css/catalog.css" rel = "stylesheet" th:href="@{/css/catalog.css}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="/images/worldbook.png" alt="Логотип сайта">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/catalog">Каталог</a></li>
+                <li><a href="/login">Аккаунт</a></li>
+                <li><a href="/cart">Корзина</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div th:each="book : ${books}" class="product-card">
+            <img th:src="@{'/images/' + ${book.id} + '.jpeg'}" alt="Книга">
+            <h3 th:text="${book.name}"></h3>
+            <p th:text="${book.description}"></p>
+            <p th:text="${book.bookPrice}"></p>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="container">
+        <p>&copy; 2023 Мой сайт. Все права защищены.</p>
+        <p>Электронная почта: <a href="mailto:info@mysite.com">info@mysite.com</a></p>
+        <p>Телефон: <a href="tel:+71234567890">+7 (123) 456-78-90</a></p>
+    </div>
+</footer>
+</body>
+</html>

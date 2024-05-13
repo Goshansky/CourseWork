@@ -25,10 +25,11 @@ public class ShoppingCartItemController {
     }
 
     @PostMapping("/{userId}/{bookId}/delete")
-    public String deleteShoppingCartItem(@RequestParam Long userId, @RequestParam int bookId, RedirectAttributes redirectAttributes) {
+    public String deleteShoppingCartItem(@RequestParam Long userId,
+                                         @RequestParam int bookId,
+                                         RedirectAttributes redirectAttributes) {
         shoppingCartItemService.deleteShoppingCartItem(userId, bookId);
         redirectAttributes.addFlashAttribute("message", "Элемент корзины успешно удален");
         return "redirect:/catalog";
     }
-
 }

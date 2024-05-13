@@ -37,20 +37,27 @@ public class MainController {
 
     @GetMapping("/catalog")
     public String homePage(Model model, Principal principal) {
-        String userName = principal.getName();
+        if (principal != null) {
+            String userName = principal.getName();
+            // Получаем объект пользователя из базы данных по его имени
+            User user = userService.findByUserName(userName);
 
-        // Получаем объект пользователя из базы данных по его имени
-        User user = userService.findByUserName(userName);
-
-        Role role = user.getRoles().stream().findFirst().orElse(null);
-        if (role != null) {
-            String roleName = role.getName();
-            System.out.println("Role name: " + roleName);
+            model.addAttribute("user", user);
+            model.addAttribute("books", bookService.findAll());
+            return "catalog";
         }
-
-        model.addAttribute("user", user);
-        model.addAttribute("books", bookService.findAll());
-        return "catalog";
+        else {
+            model.addAttribute("books", bookService.findAll());
+            return "catalog2";
+        }
+//        String userName = principal.getName();
+//
+//        // Получаем объект пользователя из базы данных по его имени
+//        User user = userService.findByUserName(userName);
+//
+//        model.addAttribute("user", user);
+//        model.addAttribute("books", bookService.findAll());
+//        return "catalog";
     }
 
     @GetMapping("/account")
@@ -60,7 +67,7 @@ public class MainController {
 
         // Получаем объект пользователя из базы данных по его имени
         User user = userService.findByUserName(userName);
-        List<Order> orders = orderRepository.findByUser_Id(user.getId());
+        List<Order> orders = orderRepository.findByUser_Id(user.getId().describeConstable().orElseThrow(() -> new RuntimeException("Пользователь не найден")));
 
         // Добавить список заказов в модель
         model.addAttribute("orders", orders);
